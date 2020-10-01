@@ -11,8 +11,8 @@ import argparse
 import time
 
 
-parser = argparse.ArgumentParser(description='Supervised training, add \
-    bias based on context signal.')
+parser = argparse.ArgumentParser(description='Supervised trianing of bioRNN \
+        with default params on DMC task..')
 parser.add_argument('--gpu', type=int, default=0, help='Index of GPU to use')
 
 if __name__=='__main__':
