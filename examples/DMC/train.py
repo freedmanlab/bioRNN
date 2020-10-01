@@ -30,12 +30,9 @@ if __name__=='__main__':
     for i in range(par['num_iterations']):
         start = time.time()
         trial_info = stim.generate_trial()
-        dead_time_mask = trial_info['train_mask']
-        ytrue_data = trial_info['desired_output']
-        input_data = trial_info['neural_input']
-        input_data = tf.constant(input_data, dtype=tf.float32)
-        ytrue_data = tf.constant(ytrue_data, dtype=tf.float32)
-        dead_time_mask = tf.constant(dead_time_mask, dtype=tf.float32)
+        input_data = tf.constant(trial_info['neural_input'], dtype=tf.float32)
+        ytrue_data = tf.constant(trial_info['desired_output'], dtype=tf.float32)
+        dead_time_mask = tf.constant(trial_info['train_mask'], dtype=tf.float32)
         data = ((input_data, dead_time_mask), ytrue_data)
         metrics = model.train_step(opt, data)
         end = time.time()
