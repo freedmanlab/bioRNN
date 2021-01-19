@@ -1,0 +1,10 @@
+hidden_size: 256
+output_size: 9
+synapse_config: 'full'
+
+task_idx: 16 # dms is 16, dmc is 17
+n_iterations: 2001
+learning_rate: 1e-2
+
+save: False
+savedir: ./saved_models/dms_model_1
