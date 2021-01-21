@@ -10,6 +10,28 @@ print("\n--> Loading parameters...")
 
 global par
 par = {
+    # Training specs === RELEVANT ===
+    'batch_size'            : 64,
+    'n_train_batches'       : 5000, #50000,
+
+    # Task specs === RELEVANT ===
+    'task'                  : 'multistim', # 'multistim', 'go'
+    'n_tasks'               : 20,
+    'multistim_trial_length': 2000,
+    'mask_duration'         : 0,
+    'dead_time'             : 200,
+
+    # Tuning function data === RELEVANT ===
+    'num_motion_dirs'       : 8,
+    'tuning_height'         : 4.0,          # 4.0, von Mises magnitude scaling factor
+
+    # Stimulus parameters === RELEVANT IF RL ===
+    'fix_break_penalty'     : -1.,
+    'wrong_choice_penalty'  : -0.01,
+    'correct_choice_reward' : 1.,
+
+
+
     # Setup parameters
     'save_dir'              : './savedir/',
     'stabilization'         : 'pathint',    # None or 'pathint' (Zenke method)
@@ -44,17 +66,6 @@ par = {
     'noise_in_sd'           : 0.0,
     'noise_rnn_sd'          : 0.05,
 
-    # Task specs
-    'task'                  : 'multistim', # 'multistim', 'go'
-    'n_tasks'               : 20,
-    'multistim_trial_length': 2000,
-    'mask_duration'         : 0,
-    'dead_time'             : 200,
-
-    # Tuning function data
-    'num_motion_dirs'       : 8,
-    'tuning_height'         : 4.0,          # 4.0, von Mises magnitude scaling factor
-
     # Cost values
     'spike_cost'            : 1e-7,
     'weight_cost'           : 0.,
@@ -67,9 +78,6 @@ par = {
     'U_stf'                 : 0.15,
     'U_std'                 : 0.45,
 
-    # Training specs
-    'batch_size'            : 64,
-    'n_train_batches'       : 5000, #50000,
 
     # Omega parameters
     'omega_c'               : 2.,
@@ -79,11 +87,6 @@ par = {
     'gating_type'           : None, # 'XdG', 'split', or None
     'gate_pct'              : 0.8,  # Num. gated hidden units for 'XdG' only
     'n_subnetworks'         : 4,    # Num. subnetworks for 'split' only
-
-    # Stimulus parameters
-    'fix_break_penalty'     : -1.,
-    'wrong_choice_penalty'  : -0.01,
-    'correct_choice_reward' : 1.,
 
 }
 

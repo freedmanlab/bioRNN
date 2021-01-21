@@ -6,7 +6,7 @@ class bioRNN(snt.RNNCore):
 
     def __init__(self, hidden_size, output_size, EI=True,
         excitatory_frac=0.8, balance_EI=True, connection_prob=1.,
-        synapse_config='full', n_receptive_fields=1., dt=10, tau_slow=1500.,
+        synapse_config='full', n_receptive_fields=2., dt=10, tau_slow=1500.,
         tau_fast=200., membrane_time_constant=100., noise_rnn_sd=0.5, name=None):
 
         super().__init__(name=name)
