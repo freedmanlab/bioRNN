@@ -108,7 +108,7 @@ class bioRNN(snt.RNNCore):
         if h_mask is None:
             h_mask = tf.ones_like(h_post)
         if w_rnn_mask is None:
-            w_rnn_mask = tf.ones_like(self.w_rnn)
+            w_rnn_mask = tf.ones_like(self.w_rnn) - tf.linalg.diag(tf.ones(self.hidden_size))
 
         # Compute updates
         leaky_part = (1-self.alpha_neuron)*h
