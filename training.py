@@ -12,6 +12,9 @@ def supervised_train_step(rnn, opt, inputs, labels, vars=None,
     - if vars is None, defaults to all trainable variables
     - train_mask has shape (T, B)
     """
+    if train_mask==None:
+        train_mask = tf.ones_like(labels[:,:,0])
+
     # Do trial
     with tf.GradientTape() as tape:
         results = rnn.do_trial(inputs, h_mask=h_mask,
