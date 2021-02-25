@@ -4,7 +4,7 @@ from metrics import decision_accuracy, fixation_accuracy
 @tf.function
 def supervised_train_step(rnn, opt, inputs, labels, vars=None,
     train_mask=None, h_mask=None, w_rnn_mask=None,
-    spike_cost_coef=1e-2, weight_cost_coef=0):
+    spike_cost_coef=1e-2, weight_cost_coef=0, max_grad_norm=0.1):
     """
     Does a supervised train step on an entire batch of trials.
     - inputs has shape (T, B, input_size)
@@ -41,7 +41,10 @@ def supervised_train_step(rnn, opt, inputs, labels, vars=None,
     if vars is None:
         vars = rnn.trainable_variables
     grads = tape.gradient(loss, vars)
-    opt.apply_gradients(zip(grads, vars))
+    clipped_grads = []
+    for grad in grads:
+        clipped_grads.append(tf.clip_by_norm(grad, max_grad_norm))
+    opt.apply_gradients(zip(clipped_grads, vars))
 
     # Return results
     argmax_acc = tf.keras.metrics.categorical_accuracy(labels, logits)
