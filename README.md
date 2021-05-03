@@ -4,9 +4,9 @@ To import these modules from anywhere, run `pip install -e .`
 
 To install all dependencies, do `pip install -r requirements.txt`
 
-To see the model in action, start at `example.ipynb` or `experiments/supervised_example/`. 
+To see the model in action, start at `example.ipynb`, `example2.ipynb` or `experiments/supervised_example/`. `example2.ipynb` shows an example of writing a custom task, NestedDMS. This task was designed with Matt Rosen and Nabilah Sammudin.
 
-Note that the parameters in `xdg_parameters.py` affect only on the data generator `xdg_stimulus.py`, and not the model described. RNN parameters sitting in `xdg_paramters.py` are a remnant of how this file was used in a previous repo.
+Note that the parameters in `xdg_parameters.py` affect only on the data generator `xdg_stimulus.py`, and not the model described. RNN parameters sitting in `xdg_paramters.py` are a remnant of how this file was used in a previous repo. Same for `stp_parameters.py` and `stp_stimulus.py`.
 
 For model description, see the Methods section of [Circuit mechanisms for the maintenance and manipulation of information in working memory](https://www.nature.com/articles/s41593-019-0414-3).
 
